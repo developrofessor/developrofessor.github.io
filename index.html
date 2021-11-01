@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Infinity Pot</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css" />
+</head>
+
+<body>
+    <div class="top">
+        <div class="menu-content">
+            <a class="menu-button" href="https://discord.gg/qX9QGavc" target="_blank"><i
+                    class="fab fa-discord"></i><span class='label'> Discord</span></a>
+            <a class="menu-button" href="https://t.me/infinitystonersnft" target="_blank"><i
+                    class="fab fa-telegram-plane"></i><span class='label'> Telegram</span></a>
+            <a class="menu-button" href="https://twitter.com/infinity_verse" target="_blank"><i
+                    class="fab fa-twitter"></i><span class='label'> Twitter</span></a>
+            <a class="menu-button" href="https://instagram.com/the_infinityverse" target="_blank"><i
+                    class="fab fa-instagram"></i><span class='label'> Instagram</span></a>
+        </div>
+        <div class="logo"></div>
+        <div class="menu-phone-button">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <button class="highlight-btn" id="documentsBtn">Documents</button>
+    </div>
+    <div class="documents">
+        The Infinity Pot Collection is cannabis infused project.<br />
+        Only 250 NFTs will be minted from this collection.<br />
+        This is our royalty system - There will be a total supply of 250 infinity pot leafs and 5 minting tiers.<br />
+        The first drop of 15 NFTs is tier 1 and 5% proceedings will be given to holders.<br />
+        The second drop of 15 NFTs is tier 2 and 7.5% proceedings will be given to holders.<br />
+        The third drop of 15 NFTs is tier 3 and 10% proceedings will be give to holders.<br />
+        The fourth drop of 15 NFTs is tier 4 and 12.5% proceedings will be given to holders.<br />
+        The firth drop of NFTs of 15 is tier 5 and 15% proceedings will be given to holders!<br />
+        Every drop after tier 5, there will be 15% royalties given to holders! As a incentive after every drop we
+        will<br />
+        give a dividend of the same proceeding number of each drop from the dev wallet to all holders.<br />
+        Also, everything dollar made after $150 for each mint, we will give back to the community.
+    </div>
+    <div class="purchase-button"
+        onclick="window.location.href='https://paintswap.finance/marketplace/collections/0xae7dafefc63b2e285257b76bf923c99dfca12587'">
+        Purchase
+    </div>
+    <script>
+        HTMLElement.prototype.fadeIn = function (duration = 300, display) {
+            let s = this.style;
+            s.opacity = s.opacity || 0;
+            s.display = 'inline-block' || display;
+            (function fade() {
+                (s.opacity = parseFloat(s.opacity) + (25 / duration)) > 1 ? s.opacity = 1 : setTimeout(fade,
+                25);
+            })();
+        }
+        NodeList.prototype.fadeIn = function () {
+            this.forEach(function (el) {
+                el.fadeIn();
+            });
+        }
+
+        HTMLElement.prototype.fadeOut = function (duration = 300, display) {
+            let s = this.style;
+            s.opacity = s.opacity || 1;
+            (function fade() {
+                (s.opacity = parseFloat(s.opacity) - (25 / duration)) < 0 ? s.display = 'none' : setTimeout(
+                    fade, 25);
+            })();
+        }
+        NodeList.prototype.fadeOut = function () {
+            this.forEach(function (el) {
+                el.fadeOut();
+            });
+        }
+
+        const documentsDiv = document.querySelector('.documents');
+        const documentsBtn = document.querySelector('#documentsBtn');
+        const menuContent = document.querySelector('.menu-content');
+        const menuButton = document.querySelector('.menu-phone-button');
+        const topNavbar = document.querySelector('.top');
+        const purchaseButton = document.querySelector('.purchase-button');
+
+        function closeDocuments() {
+            documentsDiv.style.top = (-documentsDiv.clientHeight) + 'px';
+            topNavbar.style.top = 0;
+            documentsBtn.classList.remove('title');
+            documentsBtn.style.removeProperty('top');
+            menuButton.classList.remove('back');
+            purchaseButton.fadeIn(500);
+        }
+
+        function closeMenu() {
+            menuContent.style.top = (-menuContent.clientHeight) + 'px';
+            topNavbar.style.top = 0;
+            documentsBtn.fadeIn(500)
+            menuButton.classList.remove('back');
+            purchaseButton.fadeIn(500);
+        }
+
+        documentsBtn.addEventListener('click', () => {
+            if (!documentsBtn.classList.contains('title')) {
+                purchaseButton.fadeOut(500);
+
+                documentsDiv.style.display = 'flex';
+                documentsDiv.style.top = (-documentsDiv.clientHeight) + 'px';
+
+                requestAnimationFrame(() => {
+                    documentsDiv.style.transition = 'all 750ms cubic-bezier(0.175, 0.885, 0.32, 1.1)';
+                    documentsDiv.style.top = 0;
+                    topNavbar.style.top = (documentsDiv.clientHeight + 20) + 'px';
+                    documentsBtn.classList.add('title');
+                    documentsBtn.style.top = (-documentsDiv.clientHeight) + 'px';
+                    menuButton.classList.add('back');
+                });
+            }
+        });
+
+        menuButton.addEventListener('click', () => {
+            if (menuButton.classList.contains('back')) {
+                closeDocuments();
+                closeMenu();
+            } else {
+                document.body.appendChild(menuContent);
+
+                purchaseButton.fadeOut(500);
+                documentsBtn.fadeOut(500);
+
+                menuContent.style.display = 'flex';
+                menuContent.style.top = (-menuContent.clientHeight) + 'px';
+
+                requestAnimationFrame(() => {
+                    menuContent.style.transition = 'all 750ms cubic-bezier(0.175, 0.885, 0.32, 1.1)';
+                    menuContent.style.top = 0;
+                    topNavbar.style.top = (menuContent.clientHeight + 20) + 'px';
+                    menuButton.classList.add('back');
+                });
+            }
+        });
+    </script>
+    <div class="credit">
+        Made with <span style='color: #00FF99'>&#10084;</span> by <a href="https://www.instagram.com/professor.dev/" target="_blank">Professor</a>
+    </div>
+</body>
+
+</html>
