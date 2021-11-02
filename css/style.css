@@ -191,6 +191,10 @@ body {
     font-family: 'FuturaHandwritten Medium', sans-serif;
 }
 
+.documents .content {
+    height: 50%;
+}
+
 .credit {
     color: #FFF;
     position: absolute;
